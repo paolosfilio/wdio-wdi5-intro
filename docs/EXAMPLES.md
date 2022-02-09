@@ -51,9 +51,7 @@ Luckily, WebdriverIO supports parallel testing out of the box to get rid of thes
 > cannot handle the number of sessions your test(s) will fail. Therefore, the max. number of allowed sessions depdends on your machine's specification.
 
 As soon as you increase the number of `maxInstances` in _**wdio.conf.js**_ your test automation will get parallelized:
-``` json
-{
+``` javascript
 maxInstances: 1,
-}
 ```
 

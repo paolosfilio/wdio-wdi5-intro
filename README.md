@@ -13,11 +13,11 @@ To run the app, you need to have node and npm installed.
 To run the app you have to do following steps:
 Clone the repo:
 ``` bash
-$> git clone git@github.wdf.sap.corp:ui5delivery/uiveri5-to-wdi5.git
+$> git clone git@github.com:paolosfilio/wdio-wdi5-intro.git
 ```
 Than navigate into directory:
 ```bash
-$> cd uiveri5-to-wdi5
+$> cd wdio-wdi5-intro
 ```
 Install dependencies:
 ```bash

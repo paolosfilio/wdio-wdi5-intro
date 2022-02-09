@@ -52,6 +52,8 @@ Luckily, WebdriverIO supports parallel testing out of the box to get rid of thes
 
 As soon as you increase the number of `maxInstances` in _**wdio.conf.js**_ your test automation will get parallelized:
 ``` json
+{
 maxInstances: 1,
+}
 ```
 

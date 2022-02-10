@@ -1,48 +1,51 @@
 module.exports = {
     // Actions
-    iShouldOpenTheApp() {
-        browser.goTo('#/');
+    async iShouldOpenTheApp() {
+        await browser.goTo('#/');
     },
 
-    iSearchForProduct() {
-        var search = browser.asControl({
+    async iSearchForProduct() {
+        const idSelector = {
             selector: {
                 id: 'searchField',
                 viewName: 'sap.ui.demo.cart.view.Home',
             }
-        });
-        search.getWebElement().$('input[type=search]').setValue('Watch');
+        };
+        await browser.asControl(idSelector).setValue('Watch');
     },
 
-    iSelectTheFirstProduct() {
-        var text = browser.asControl({
+    async iSelectTheFirstProduct() {
+        const textSelector = {
             selector: {
                 controlType: 'sap.m.Text',
                 properties: {
                     text: 'Flat Watch HD32'
                 }
             }
-        });
-        text.getWebElement().click();
+        };
+        await browser.asControl(textSelector).click();
     },
 
     // Assertions
-    iShouldSeeAllCategories() {
-        var list = browser.asControl({
+    async iShouldSeeAllCategories() {
+        const idSelector = {
             selector: {
                 id: 'container-cart---homeView--categoryList'
             },
-        });
-        expect(list.getItems(true).length).toBe(16); 
+        };
+        const listSize = await browser.asControl(idSelector)?.getItems(true)?.length;
+        expect(listSize).toBe(16);
     },
 
-    theProductListShouldBeFiltered: function() {
-        var list = browser.asControl({
+    async theProductListShouldBeFiltered() {
+        const idSelector = {
             selector: {
-                id: 'container-cart---homeView--productList'
+                id: 'container-cart---homeView--categoryList'
             }
-        });
-        const firstItem = list.getItems()[0];
-        expect(firstItem.getTitle()).toBe('Flat Watch HD32');
+        };
+
+        const title = await browser.asControl(idSelector)?.getItems()[0]?.getTitle();
+
+        expect(title).toBe('Flat Watch HD32');
     }
 }

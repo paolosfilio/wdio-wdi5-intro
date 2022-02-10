@@ -1,27 +1,27 @@
 const HomePage = require('./pages/home');
 const ProductPage = require('./pages/product');
 
-describe("teched", function () {
+describe("teched", () => {
 	
-	it("should validate the home screen", () => {
-		HomePage.iShouldOpenTheApp();
-		HomePage.iShouldSeeAllCategories();
+	it("should validate the home screen", async () => {
+		await HomePage.iShouldOpenTheApp();
+		await HomePage.iShouldSeeAllCategories();
 	});
 
-	it("Should search for a product", function () {
+	it("Should search for a product", async () => {
 		// Actions
-		HomePage.iSearchForProduct();
+		await HomePage.iSearchForProduct();
 
-        // Assertions
-		HomePage.theProductListShouldBeFiltered();
+		// Assertions
+		await HomePage.theProductListShouldBeFiltered();
 	});
 
-	it("Should navigate to the product", function () {
+	it("Should navigate to the product", async () => {
 		// Actions
-		HomePage.iSelectTheFirstProduct();
+		await HomePage.iSelectTheFirstProduct();
 
         // Assertions
-		ProductPage.theProductTitleIsShown();
-		ProductPage.theProductCouldBeOrdered();
+		await ProductPage.theProductTitleIsShown();
+		await ProductPage.theProductCouldBeOrdered();
 	});
 });

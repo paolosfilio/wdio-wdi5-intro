@@ -1,29 +1,31 @@
 module.exports = {
-    // Actions
+  // Actions
 
-    // Assertions
-    theProductTitleIsShown() {
-        var header = browser.asControl({
-            selector: {
-                controlType: 'sap.m.ObjectHeader',
-                bindingPath: {
-                    path: "/Products('HT-6130')"
-                }
-            }
-        });
-        expect(header.getTitle()).toBe('Flat Watch HD32');
-    },
+  // Assertions
+  async theProductTitleIsShown() {
+    const bindingPathSelector = {
+      selector: {
+        controlType: "sap.m.ObjectHeader",
+        bindingPath: {
+          path: "/Products('HT-6130')"
+        }
+      }
+    };
+    const title = await browser.asControl(bindingPathSelector).getTitle();
+    expect(title).toBe("Flat Watch HD32");
+  },
 
-    theProductCouldBeOrdered() {
-        var button = browser.asControl({
-            selector:{
-                controlType: 'sap.m.Button',
-                i18NText: {
-                    propertyName: "text", 
-                    key: "addToCartShort"
-                }
-            }
-        });
-        expect(button.getWebElement().isDisplayed()).toBeTruthy();
-    }
-}
+  async theProductCouldBeOrdered() {
+    const i18nSelector = {
+      selector: {
+        controlType: "sap.m.Button",
+        i18NText: {
+          propertyName: "text",
+          key: "addToCartShort"
+        }
+      }
+    };
+    const enabled = await browser.asControl(i18nSelector).getEnabled();
+    expect(enabled).toBeTruthy();
+  }
+};

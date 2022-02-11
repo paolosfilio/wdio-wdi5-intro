@@ -1,6 +1,6 @@
 {
-  "name": "uiveri5",
-  "private": true,
+  "name": "wdio-wdi5-intro",
+  "private": false,
   "scripts": {
     "test": "wdio run wdio.conf.js"
   },

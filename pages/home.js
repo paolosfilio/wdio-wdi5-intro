@@ -1,6 +1,6 @@
 module.exports = {
     // Actions
-    async iShouldOpenTheApp() {
+    async iOpenTheApp() {
         await browser.goTo('#/');
     },
 

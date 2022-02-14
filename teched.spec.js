@@ -5,7 +5,7 @@ describe("teched", () => {
 	
 	it("should validate the home screen", async () => {
 		// Actions
-		await HomePage.iShouldOpenTheApp();
+		await HomePage.iOpenTheApp();
 		// Assertions
 		await HomePage.iShouldSeeAllCategories();
 	});

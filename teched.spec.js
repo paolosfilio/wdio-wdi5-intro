@@ -4,14 +4,15 @@ const ProductPage = require('./pages/product');
 describe("teched", () => {
 	
 	it("should validate the home screen", async () => {
+		// Actions
 		await HomePage.iShouldOpenTheApp();
+		// Assertions
 		await HomePage.iShouldSeeAllCategories();
 	});
 
 	it("Should search for a product", async () => {
 		// Actions
 		await HomePage.iSearchForProduct();
-
 		// Assertions
 		await HomePage.theProductListShouldBeFiltered();
 	});
@@ -19,8 +20,7 @@ describe("teched", () => {
 	it("Should navigate to the product", async () => {
 		// Actions
 		await HomePage.iSelectTheFirstProduct();
-
-        // Assertions
+		// Assertions
 		await ProductPage.theProductTitleIsShown();
 		await ProductPage.theProductCouldBeOrdered();
 	});

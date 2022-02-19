@@ -33,7 +33,7 @@ You can use the WDIO CLI to Initialize WebdriverIO and to configure the _wdio.co
 
 The following image shall give you a first impression about how configuration files in UIVeri5 and WDIO can look like. Please note that those files shall not be used as references for your project as the configuration highly depends on your specific project, environment and setup needs.
 
-![img.png](img.png)
+![Configuration Files](./img/configurationFiles.png)
 
 You can execute the following steps to add WDIO + WDI5 to your existing UIVeri5 project.
 

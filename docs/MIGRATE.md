@@ -28,36 +28,45 @@ Short description of dependencies in the picture above:
  - ... many other dependencies are possible
 
 # 2. Setup configuration file
-You can use the wdio console-based wizard to configure the wdio.conf.js. It will also add the necessary package references in your package.json. If you choose the jasmine or mocha for test syntax, the migration would be easiest.
+The fact that WebdriverIO has more features than UIVeri5 is also reflected by the configuration file. All available options can be found in the [official documentation](https://webdriver.io/docs/options/).
+You can use the WDIO CLI to Initialize WebdriverIO and to configure the _wdio.conf.js_ file. It will also add the necessary package references in your package.json. If you choose the jasmine or mocha for test syntax, the migration would be easiest.
+
+The following image shall give you a first impression about how configuration files in UIVeri5 and WDIO can look like. Please note that those files shall not be used as references for your project as the configuration highly depends on your specific project, environment and setup needs.
+
+![img.png](img.png)
+
+You can execute the following steps to add WDIO + WDI5 to your existing UIVeri5 project.
+
+1. First, inside your UIVeri5 project run:
+    ``` bash
+    $> npm init wdio .
+    ```
+    This will start a wizard and according to your answers in the wizard the configuration file _wdio.conf.js_ gets created and the package.json is updated. After running through the wizard you can remove the UIVeri5 dependencies.
 
 
+2. Then add wdio-ui5-service as a development dependecy in package.json:
+    ``` bash
+    $> npm install wdio-ui5-service --save-dev
+    ```
 
-``` bash
-$> npm i --save-dev @wdio/cli
-$> npx wdio config
-```
-Then add wdio-ui5-service to dev dependecy in package.json:
-``` bash
-$> npm install wdio-ui5-service --save-dev
-```
-You also need to add 'ui5' service in services in wdio.conf.js
-``` javascript
-services: [
-    // other services like 'chromedriver'
-    // ...
-    'ui5'
-]
-```
-Add the mimimum configuration for this service somewehere in wdio.conf.js.
-``` javascript
-wdi5: {
-    screenshotPath: path.join('wdio-ui5-service', 'test', 'report', 'screenshots'),
-    logLevel: 'verbose', 
-    platform: 'browser', 
-    url: 'index.html',
-    deviceType: 'web',
-},
-```
+3. Configure WebdriverIO to use the WDI5 plugin. In _wdio.conf.js_ add the following:
+    ``` javascript
+    services: [
+        // other services like 'selenium-standalone'
+        // ...
+        'ui5'
+    ]
+    ```
+4. Add the mimimum configuration for the WDI5 plugin/service somewhere as root property in _wdio.conf.js_:
+    ``` javascript
+        wdi5: {
+            screenshotPath: path.join('wdio-ui5-service', 'test', 'report', 'screenshots'),
+            logLevel: 'verbose', // error | verbose | silent
+            platform: 'browser', // electron, browser, android, ios
+            url: 'index.html',
+            deviceType: 'web',
+        },
+    ```
 
 # Page Objects
 UIVeri5 has a global helper method createPageObjects() for defining "heavy-weight" Page Objects, derived from OPA5. This method adds the content of the actions:{} to the global When clause and the assertions:{} to the Then clause. With WDIO there is no explicit support for BDD style POs but you can handle it very simmilarly. Just export a 'flat' object with all logical actions and assertions from the PO module. Import this PO under a specific name where ever you need it and call the methods in your spec.

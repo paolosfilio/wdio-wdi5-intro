@@ -41,10 +41,10 @@ You can execute the following steps to add WDIO + WDI5 to your existing UIVeri5 
     ``` bash
     $> npm init wdio .
     ```
-    This will start a wizard and according to your answers in the wizard the configuration file _wdio.conf.js_ gets created and the package.json is updated. After running through the wizard you can remove the UIVeri5 dependencies.
+    This will start a wizard and according to your answers in the wizard the configuration file _wdio.conf.js_ gets created and the _package.json_ is updated. After running through the wizard you can remove the UIVeri5 dependencies.
 
 
-2. Then add wdio-ui5-service as a development dependecy in package.json:
+2. Then add [wdio-ui5-service](https://github.com/js-soft/wdi5) as a development dependecy in _package.json_:
     ``` bash
     $> npm install wdio-ui5-service --save-dev
     ```

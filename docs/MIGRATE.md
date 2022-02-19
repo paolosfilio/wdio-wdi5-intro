@@ -1,7 +1,7 @@
 # Migration Guide
 This guide describes how to migrate existing UIVeri5 tests to WDIO + WDI5.
 
-First, both UIVeri5 and WDI5 utilize UI5’s test API. This is why even UIVeri5 got deprecated it will still notice changes in UI5 controls. However, new planned features like parallel executions, etc. are not progressed any further.
+First, both UIVeri5 and WDI5 utilize [UI5’s test API](https://ui5.sap.com/#/api/sap.ui.test). This is why even UIVeri5 got deprecated it will still notice changes in UI5 controls. However, new planned features like parallel executions, etc. are not progressed any further.
 On long term and especially when new test scripts are developed, the successor (WDIO + WDI5) should highly be considered.
 
 The following list gives an overview about the steps necessary to migrate:
@@ -14,16 +14,17 @@ The following list gives an overview about the steps necessary to migrate:
 # 1. Package.json
 Usually, the package.json file of an WDIO/WDI5 project has more dependencies. WebdriverIO can cover a broader scope of test automation (as it has more features) and the core of the module is splitted into different modules which need to be installed separately. UIVeri5 has packed the most important features in one module and therefore usually needs only a small package.json file or in case of global installation (npm install @ui5/uiveri5 -g) it can even completely be skipped.
 
-The following image shall give you a first impression about how a typically WebdriverIO package.json can look like:
+The following image shall give you a first impression about how a typical WebdriverIO package.json can look like:
 
 ![img_2.png](img/packageJsons.png)
 
- - @wdio/cli: WebdriverIO testrunner command line interface
- - @wdio/local-runner: A WebdriverIO runner to run tests locally 
- - @wdio/mocha-framework: WDIO supports different frameworks (mocha, jasmine and cucumber)
- - @wdio/selenium-standalone-service:  Sets up all required WebDrivers for you. See [here](./EXAMPLES.md#cross-browser-testing) for more information
- - @wdio/spec-reporter: A WebdriverIO plugin to report in spec style. More advanced (graphical) reporters exists as well
- - wdio-ui5-service: WebdriverIO plugin to test UI5 applications. See [here](https://github.com/js-soft/wdi5) for more information.
+Short description of dependencies in the picture above:
+ - **@wdio/cli**: WebdriverIO testrunner command line interface
+ - **@wdio/local-runner**: A WebdriverIO runner to run tests locally 
+ - **@wdio/mocha-framework**: WDIO supports different frameworks (mocha, jasmine and cucumber)
+ - **@wdio/selenium-standalone-service**:  Sets up all required WebDrivers for you. See [here](./EXAMPLES.md#cross-browser-testing) for more information
+ - **@wdio/spec-reporter**: A WebdriverIO plugin to report in spec style. More advanced (graphical) reporters exists as well
+ - **wdio-ui5-service**: WebdriverIO plugin to test UI5 applications. See [here](https://github.com/js-soft/wdi5) for more information.
  - ... many other dependencies are possible
 
 # 2. Setup configuration file
